@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         PreviewConfig pConfig = new PreviewConfig.Builder()
                                     .setTargetAspectRatio(aspectRatio)
                                     .setTargetResolution(screen)
-                                    //.setLensFacing(CameraX.LensFacing.FRONT)
+                                    .setLensFacing(CameraX.LensFacing.FRONT)
                                     .build();
         Preview preview = new Preview(pConfig);
 
@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageCaptureConfig imageCaptureConfig = new ImageCaptureConfig.Builder().setCaptureMode(ImageCapture.CaptureMode.MIN_LATENCY)
-                .setTargetRotation(getWindowManager().getDefaultDisplay().getRotation()).build();
+                .setLensFacing(CameraX.LensFacing.FRONT).setTargetRotation(getWindowManager().getDefaultDisplay().getRotation()).build();
+
         final ImageCapture imgCap = new ImageCapture(imageCaptureConfig);
 
         findViewById(R.id.imgCapture).setOnClickListener(new View.OnClickListener() {
